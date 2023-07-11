@@ -73,39 +73,185 @@ main{
     max-width: 550px;
     background-color: hsla(0, 0%, 7%, 1);
 
+
+}
+
+h3{
+    font-size: 1.125rem;
+    color:hsla(240, 1%, 18%, 1);
+    font-weight: 700;
+
+}
+
+
+header > a{
+    color:hsla(240, 1%, 18%, 1);
+    font-size: .875rem;
+    font-weight: bold;
+}
+
+h1{
+    font-size: 2.7rem;
 }
 
 .header{
     display: flex;
-    align-items: center;
     color: white;
     background-image: url("./assets/background.png");
     justify-content: space-between;
     padding-top: 5.125em;
+    padding-bottom: 5.125em;
     padding-left: 2.75em;
     padding-right: 2.75em;
 }
 
-.header > h3{
-    font-size: .875rem;
+.search-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1.25em;
 }
 
-button{
+.search-button{
     border-radius: 0px, 6px, 6px, 0px;
     background: hsla(0, 0%, 30%, 1);
     border: none;
     font-size: .875rem;
     color: white;
-    padding: .7em 2.3em;
+    min-height: 38px;
+    padding: 0 2.3em;
+    margin: 0;
 }
 
 
-h3{
-    color:hsla(240, 1%, 18%, 1);
+.search-button:hover{
+    cursor: pointer;
+    background-color: rgb(69, 68, 68);
+}
+
+
+
+input{
+    min-width: 342px;
+    min-height: 38px;
+    padding-left: 1em;
+    color: hsla(0, 0%, 65%, 1);
+    background-color: #2e2e2f;
+    border: none;
+    margin: 0;
+
+}
+
+/* Main Section Styling */
+
+
+
+.main-section{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2.75em;
+    padding-right: 2.75em;
+}
+
+.placeholder-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.movie{
+    display: flex;
+    color: white;
+    border-bottom: 1.5px solid hsla(0, 0%, 17%, 1);
+    padding-bottom: 1em;
+}
+
+
+.add-to-watchlist-section,
+.extra-details,
+.title{
+    display: flex;
+    align-items: center;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    justify-content: center;
+}
+
+.movie-poster{
+    width: 99px;
+    height: 147px;
+}
+
+
+
+.movie-title{
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-right: .5em;
+}
+
+.movie-description{
+    font-size: .875rem;
+    margin-top: .5em;
+    color: hsla(0, 0%, 65%, 1);
+}
+
+.rating{
+    margin-left: .5em;
+}
+
+.watchlist-btn{
+    width: 16px;
+    height: 16px;
+    margin-right: .3em;
+    border-radius: 50%;
+    border:none;
     
 }
 
-
-h1{
-    font-size: 2.7rem;
+.runtime,
+.genre,
+.watchlist-text,
+.rating{
+    font-size: .75rem;
+    font-weight: 400;
+    color: white;
+    margin-right: 1.5em;
+    
 }
+
+.hidden{
+    display: none;
+}
+
+
+
+
+/* 
+            <div class="movie">
+                <img src="./assets/movie.png" alt="">
+                <div class="details">
+                    <div class="title">
+                        <h2 class="movie-title">Blade Runner</h2>
+                        <h2 class="rating">8.1</h2>
+                        <img src="./assets/Star.png" alt="">
+                    </div>
+                    <div class="extra-details">
+                        <h3 class="runtime">116 min</h3>
+                        <h3 class="genre">Drama, Mystery, Sci-fi</h3>
+                        <div>
+                            <button img="./assets/plus.png"></button>
+                            <h3>Watchlist</h3>
+                        </div>
+                        <p class="movie-description">A blade runner must pursue and terminate four replicants who stole a ship in space, 
+                        and have returned to Earth to find their creator.</p>
+                    </div>
+                     */
