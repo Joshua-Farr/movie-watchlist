@@ -2,6 +2,15 @@ document.getElementById("search-button").addEventListener("click", searchForMovi
 mainSectionDisplay = document.getElementById("main-section");
 let selectedMovies = [];
 
+
+ 
+// addEventListener("DOMContentLoaded", (event) => {
+//     console.log(" new page loaded!")
+//     selectedMovies = JSON.parse(localStorage.getItem("myMovieWatchlist"));
+//     console.log(selectedMovies);
+//     console.log("we have the moveies!")
+// });
+
 //Adding movies to the watchlist
 document.addEventListener("click", function(e){
     fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${e.target.id}`)

@@ -7,6 +7,9 @@ let moviesFromLocalStorage = [];
 addEventListener("DOMContentLoaded", (event) => {
     console.log(" new page loaded!")
     moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
+    if(moviesFromLocalStorage.length===0){
+        return;
+    }
     console.log(moviesFromLocalStorage);
     console.log("we have the moveies!")
     renderMovie(moviesFromLocalStorage);
@@ -15,18 +18,15 @@ addEventListener("DOMContentLoaded", (event) => {
 
 
 document.addEventListener("click", function(e){
-    if(moviesFromLocalStorage.length){
+    if(moviesFromLocalStorage.length !=0){
         const movieToRemoveIndex = moviesFromLocalStorage.findIndex((movie) => movie.imdbID === e.target.id);
         moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
         localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
         moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
         console.log(moviesFromLocalStorage);
         renderMovie(moviesFromLocalStorage);
-
-
-
     }else{
-        renderPlaceholder();
+        renderPlaceholder(); //Need 
     }
 })
 
