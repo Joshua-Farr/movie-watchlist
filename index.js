@@ -1,5 +1,22 @@
 document.getElementById("search-button").addEventListener("click", searchForMovie);
 mainSectionDisplay = document.getElementById("main-section");
+let selectedMovies = [];
+
+//Adding movies to the watchlist
+document.addEventListener("click", function(e){
+    fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${e.target.id}`)
+    .then(response => response.json())
+    .then(data => {
+        
+        if(data.Error){
+            console.log("error!")
+        }else {
+            selectedMovies.push(data); 
+            localStorage.setItem("myMovieWatchlist", JSON.stringify(selectedMovies))
+            console.log(selectedMovies);
+        }
+    })
+})
 
 
 function searchForMovie(){
@@ -38,9 +55,9 @@ function renderMovie(movie){
                     <div class="extra-details">
                         <h3 class="runtime">${movie.Runtime}</h3>
                         <h3 class="genre">${movie.Genre}</h3>
-                        <div class="add-to-watchlist-section" id="add-to-watchlist-section" onclick="addToWatchList(hello)" data-movie="${movie.imdbID}">
-                            <button class="watchlist-btn"><img src="./assets/plus.png" alt="" class="add-img" ></button>
-                            <h3 class="watchlist-text">Watchlist</h3>
+                        <div class="add-to-watchlist-section" id="${movie.imdbID}">
+                            <button class="watchlist-btn" id="${movie.imdbID}"><img src="./assets/plus.png" alt="" class="add-img" ></button>
+                            <h3 class="watchlist-text" id="${movie.imdbID}">Watchlist</h3>
                         </div>
                     </div>
                     <p class="movie-description">${movie.Plot}</p>
