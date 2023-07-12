@@ -1,8 +1,4 @@
-movieTitle = "";
-
-
-
-document.getElementById("search-button").addEventListener("click", searchForMovie)
+document.getElementById("search-button").addEventListener("click", searchForMovie);
 mainSectionDisplay = document.getElementById("main-section");
 
 
@@ -42,16 +38,19 @@ function renderMovie(movie){
                     <div class="extra-details">
                         <h3 class="runtime">${movie.Runtime}</h3>
                         <h3 class="genre">${movie.Genre}</h3>
-                        <div class="add-to-watchlist-section">
-                            <button class="watchlist-btn"><img src="./assets/plus.png" alt="" class="add-img"></button>
+                        <div class="add-to-watchlist-section" id="add-to-watchlist-section" onclick="addToWatchList(hello)" data-movie="${movie.imdbID}">
+                            <button class="watchlist-btn"><img src="./assets/plus.png" alt="" class="add-img" ></button>
                             <h3 class="watchlist-text">Watchlist</h3>
                         </div>
                     </div>
                     <p class="movie-description">${movie.Plot}</p>
-                    
-                    
                 </div>
 
             </div>`
+}
+
+
+function addToWatchList(test){
+    console.log(test)
 
 }

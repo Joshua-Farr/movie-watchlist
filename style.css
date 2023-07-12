@@ -167,6 +167,24 @@ input{
     align-items: center;
 }
 
+.placeholder-text{
+    color: hsla(0, 0%, 47%, 1);
+
+}
+
+.placeholder-text2{
+    color: white;
+}
+
+.subtitle{
+    display: flex;
+    align-items: center;
+    gap: .8em;
+}
+
+.subtitle > img{
+    width: 18px;
+}
 
 .movie{
     display: flex;
@@ -182,6 +200,10 @@ input{
 .title{
     display: flex;
     align-items: center;
+}
+
+.add-to-watchlist-section:hover{
+    cursor: pointer;
 }
 
 .details{
