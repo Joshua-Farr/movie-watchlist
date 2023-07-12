@@ -70,7 +70,7 @@ body{
 }
 
 main{
-    max-width: 550px;
+    width: 550px;
     background-color: hsla(0, 0%, 7%, 1);
 
 
@@ -103,6 +103,11 @@ h1{
     padding-bottom: 5.125em;
     padding-left: 2.75em;
     padding-right: 2.75em;
+}
+
+.watchlist-link{
+    text-decoration: none;
+    color: inherit;
 }
 
 .search-bar{
@@ -147,7 +152,7 @@ input{
 
 
 .main-section{
-    height: 500px;
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,6 +173,7 @@ input{
     color: white;
     border-bottom: 1.5px solid hsla(0, 0%, 17%, 1);
     padding-bottom: 1em;
+    margin-top: 1.5em;
 }
 
 
