@@ -1,33 +1,44 @@
 mainSectionDisplay = document.getElementById("main-section");
-// document.getElementById("return-to-search").addEventListener("click", updateMovieLocalStorage);
-
 
 let moviesFromLocalStorage = [];
 
 addEventListener("DOMContentLoaded", (event) => {
-    console.log(" new page loaded!")
     moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
     if(moviesFromLocalStorage.length===0){
         return;
     }
-    console.log(moviesFromLocalStorage);
-    console.log("we have the moveies!")
     renderMovie(moviesFromLocalStorage);
-
 });
 
 
 document.addEventListener("click", function(e){
-    if(moviesFromLocalStorage.length !=0){
-        const movieToRemoveIndex = moviesFromLocalStorage.findIndex((movie) => movie.imdbID === e.target.id);
+
+    let movieID = e.target.id;
+    const movieToRemoveIndex = moviesFromLocalStorage.findIndex((movie) => movie.imdbID === e.target.id);
+    if(movieToRemoveIndex != -1 && moviesFromLocalStorage.length >1){
         moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
         localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
         moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
-        console.log(moviesFromLocalStorage);
         renderMovie(moviesFromLocalStorage);
-    }else{
-        renderPlaceholder(); //Need 
+    }else if(movieToRemoveIndex != -1 && moviesFromLocalStorage.length === 1){
+        moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
+        localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
+        moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
+        renderPlaceholder();
     }
+
+
+
+    // if(moviesFromLocalStorage.length !=0){
+    //     const movieToRemoveIndex = moviesFromLocalStorage.findIndex((movie) => movie.imdbID === e.target.id);
+    //     moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
+    //     localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
+    //     moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
+    //     console.log(moviesFromLocalStorage);
+    //     renderMovie(moviesFromLocalStorage);
+    // }else{
+    //     renderPlaceholder(); //Need 
+    // }
 })
 
 
