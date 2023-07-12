@@ -1,4 +1,6 @@
 mainSectionDisplay = document.getElementById("main-section");
+// document.getElementById("return-to-search").addEventListener("click", updateMovieLocalStorage);
+
 
 let moviesFromLocalStorage = [];
 
@@ -12,16 +14,31 @@ addEventListener("DOMContentLoaded", (event) => {
 });
 
 
-function removeMovieFromWatchlist(){
-    
-}
+document.addEventListener("click", function(e){
+    if(moviesFromLocalStorage.length){
+        const movieToRemoveIndex = moviesFromLocalStorage.findIndex((movie) => movie.imdbID === e.target.id);
+        moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
+        localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
+        moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
+        console.log(moviesFromLocalStorage);
+        renderMovie(moviesFromLocalStorage);
+
+
+
+    }else{
+        renderPlaceholder();
+    }
+})
+
+
+// function updateMovieLocalStorage(){
+//     localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
+// }
 
 
 
 function renderMovie(myMoviesArray){
     mainSectionDisplay.innerHTML = "";
-
-
     for(i =0; i < myMoviesArray.length; i++){
         mainSectionDisplay.innerHTML +=
             `<div class="movie">
@@ -45,4 +62,16 @@ function renderMovie(myMoviesArray){
     
             </div>`
     }
+}
+
+
+function renderPlaceholder(){
+    mainSectionDisplay.innerHTML =
+            `<div class="placeholder-image">
+                <h3 class="placeholder-text">Your watchlist is looking a little empty...</h3>
+                <div class="subtitle">
+                    <img src="./assets/plus.png" alt="">
+                    <h3 class="placeholder-text2">Let’s add some movies!</h3>
+                </div>
+            </div>`
 }
