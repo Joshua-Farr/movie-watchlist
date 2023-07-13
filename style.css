@@ -68,6 +68,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #161616;
 }
 
 main{
@@ -121,7 +122,7 @@ h1{
 }
 
 .search-button{
-    border-radius: 0px, 6px, 6px, 0px;
+    border-radius: 0px 6px 6px 0px;
     background: hsla(0, 0%, 30%, 1);
     border: none;
     font-size: .875rem;
@@ -137,6 +138,9 @@ h1{
     background-color: rgb(69, 68, 68);
 }
 
+.search-input{
+    border-radius: 6px 0px 0px 6px;
+}
 
 
 
@@ -177,6 +181,10 @@ input{
 
 }
 
+.center{
+    text-align: center;
+}
+
 .placeholder-text2{
     color: white;
 }
@@ -199,6 +207,9 @@ input{
     margin-top: 1.5em;
 }
 
+.movie:last-of-type{
+    border: none;
+}
 
 .add-to-watchlist-section,
 .extra-details,

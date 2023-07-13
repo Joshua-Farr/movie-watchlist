@@ -46,7 +46,7 @@ function renderMovie(myMoviesArray){
                         <h3 class="runtime">${myMoviesArray[i].Runtime}</h3>
                         <h3 class="genre">${myMoviesArray[i].Genre}</h3>
                         <div class="add-to-watchlist-section" id="${myMoviesArray[i].imdbID}">
-                            <button class="watchlist-btn" id="${myMoviesArray[i].imdbID}"><img src="./assets/minus.png" alt="" class="add-img" ></button>
+                            <img src="./assets/minus.png" alt="" class="add-img watchlist-btn" id="${myMoviesArray[i].imdbID}">
                             <h3 class="watchlist-text" id="${myMoviesArray[i].imdbID}">Remove</h3>
                         </div>
                     </div>
