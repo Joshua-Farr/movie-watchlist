@@ -27,25 +27,7 @@ document.addEventListener("click", function(e){
         renderPlaceholder();
     }
 
-
-
-    // if(moviesFromLocalStorage.length !=0){
-    //     const movieToRemoveIndex = moviesFromLocalStorage.findIndex((movie) => movie.imdbID === e.target.id);
-    //     moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
-    //     localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
-    //     moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
-    //     console.log(moviesFromLocalStorage);
-    //     renderMovie(moviesFromLocalStorage);
-    // }else{
-    //     renderPlaceholder(); //Need 
-    // }
 })
-
-
-// function updateMovieLocalStorage(){
-//     localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
-// }
-
 
 
 function renderMovie(myMoviesArray){
