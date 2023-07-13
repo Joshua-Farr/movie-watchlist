@@ -4,7 +4,7 @@ let moviesFromLocalStorage = [];
 
 addEventListener("DOMContentLoaded", (event) => {
     moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
-    if(moviesFromLocalStorage.length===0){
+    if(moviesFromLocalStorage.length === 0){
         return;
     }
     renderMovie(moviesFromLocalStorage);
@@ -12,16 +12,22 @@ addEventListener("DOMContentLoaded", (event) => {
 
 
 document.addEventListener("click", function(e){
-
     let movieID = e.target.id;
     const movieToRemoveIndex = moviesFromLocalStorage.findIndex((movie) => movie.imdbID === e.target.id);
-    if(movieToRemoveIndex != -1 && moviesFromLocalStorage.length >1){
+    if(movieToRemoveIndex != -1 && moviesFromLocalStorage.length > 1){
         moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
+
+        //saving to local storage and then reloading 
         localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
         moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
+
         renderMovie(moviesFromLocalStorage);
+        
+    //handing if there is only one movie left in the watchlist array
     }else if(movieToRemoveIndex != -1 && moviesFromLocalStorage.length === 1){
         moviesFromLocalStorage.splice(movieToRemoveIndex, 1);
+        
+        //saving to local storage and then reloading 
         localStorage.setItem("myMovieWatchlist", JSON.stringify(moviesFromLocalStorage)); 
         moviesFromLocalStorage = JSON.parse(localStorage.getItem("myMovieWatchlist"));
         renderPlaceholder();
@@ -31,6 +37,7 @@ document.addEventListener("click", function(e){
 
 
 function renderMovie(myMoviesArray){
+    //Clearing the display area
     mainSectionDisplay.innerHTML = "";
     for(i =0; i < myMoviesArray.length; i++){
         mainSectionDisplay.innerHTML +=

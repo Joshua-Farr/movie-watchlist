@@ -22,7 +22,6 @@ function searchForMovie(){
     fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=36b0b502&s=${movieTitle}&page=1`)
     .then( response => response.json())
     .then(data => {
-
         if(data.Error){
             renderNotFound();
         }else{
@@ -51,23 +50,21 @@ document.addEventListener("click", function(e){
     fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${e.target.id}`)
     .then(response => response.json())
     .then(data => {
-
         //checking to see if movie has already been added to the list
         const isMovieSelected = selectedMovies.findIndex((movie) => movie.imdbID === e.target.id);
-        console.log(isMovieSelected)
         if(data.Error){
             console.log("error!")
         }else if(isMovieSelected === -1){
             selectedMovies.push(data); 
             localStorage.setItem("myMovieWatchlist", JSON.stringify(selectedMovies))
-            console.log(selectedMovies);
         }
     })
 })
 
 function renderNotFound(){
     mainSectionDisplay.innerHTML =
-    `<h3 class="placeholder-text center">Unable to find what you’re looking for. Please try another search.</h3>`
+    `<h3 class="placeholder-text center">Unable to find what you’re looking for. 
+        Please try another search.</h3>`
 }
 
 
