@@ -159,7 +159,6 @@ input{
 /* Main Section Styling */
 
 
-
 .main-section{
     min-height: 500px;
     display: flex;
@@ -275,27 +274,3 @@ input{
 .hidden{
     display: none;
 }
-
-
-
-
-/* 
-            <div class="movie">
-                <img src="./assets/movie.png" alt="">
-                <div class="details">
-                    <div class="title">
-                        <h2 class="movie-title">Blade Runner</h2>
-                        <h2 class="rating">8.1</h2>
-                        <img src="./assets/Star.png" alt="">
-                    </div>
-                    <div class="extra-details">
-                        <h3 class="runtime">116 min</h3>
-                        <h3 class="genre">Drama, Mystery, Sci-fi</h3>
-                        <div>
-                            <button img="./assets/plus.png"></button>
-                            <h3>Watchlist</h3>
-                        </div>
-                        <p class="movie-description">A blade runner must pursue and terminate four replicants who stole a ship in space, 
-                        and have returned to Earth to find their creator.</p>
-                    </div>
-                     */
