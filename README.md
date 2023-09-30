@@ -1,8 +1,8 @@
-# React Movie Watchlist
+# Movie Watchlist
 
 ## Overview
 
-The React Movie Watchlist is a web application designed to help movie enthusiasts keep track of movies they want to watch. With an intuitive user interface and integration with a movie database API, this app simplifies the process of managing your movie watchlist.
+The Movie Watchlist is a web application designed to help movie enthusiasts keep track of movies they want to watch. With an intuitive user interface and integration with a movie database API, this app simplifies the process of managing your movie watchlist.
 
 ## Key Features
 
