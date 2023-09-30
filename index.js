@@ -36,7 +36,7 @@ function searchForMovie() {
 //Gets additiional details from the API using the imdbID returned from searchForMovie()
 function getMovieInformation(movieArray) {
   movieArray.forEach(function (movie) {
-    fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${movie.imdbID}`)
+    fetch(`https://www.omdbapi.com/?apikey=36b0b502&i=${movie.imdbID}`)
       .then((response) => response.json())
       .then((data) => renderMovie(data));
   });
@@ -49,7 +49,7 @@ function clearMovieArea() {
 
 //Adding movies to the watchlist
 document.addEventListener("click", function (e) {
-  fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${e.target.id}`)
+  fetch(`https://www.omdbapi.com/?apikey=36b0b502&i=${e.target.id}`)
     .then((response) => response.json())
     .then((data) => {
       //checking to see if movie has already been added to the list
