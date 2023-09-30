@@ -1,77 +1,81 @@
-document.getElementById("search-button").addEventListener("click", searchForMovie);
+document
+  .getElementById("search-button")
+  .addEventListener("click", searchForMovie);
 
 mainSectionDisplay = document.getElementById("main-section");
 let selectedMovies = [];
 
 //Adding search funcitonality with "Enter" key press
 document.getElementById("search").addEventListener("keypress", (e) => {
-    if(e.key === "Enter"){
-        searchForMovie();
-    } 
+  if (e.key === "Enter") {
+    searchForMovie();
+  }
 });
 
 //Getting movie list from localStorage on page reload
 document.addEventListener("DOMContentLoaded", () => {
-    selectedMovies = JSON.parse(localStorage.getItem("myMovieWatchlist"));
-})
+  selectedMovies = JSON.parse(localStorage.getItem("myMovieWatchlist"));
+});
 
-
-
-function searchForMovie(){
-    movieTitle = document.getElementById("search").value;
-    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=36b0b502&s=${movieTitle}&page=1`)
-    .then( response => response.json())
-    .then(data => {
-        if(data.Error){
-            renderNotFound();
-        }else{
-            clearMovieArea();
-            getMovieInformation(data.Search)
-        }
-    })
+function searchForMovie() {
+  movieTitle = document.getElementById("search").value;
+  fetch(
+    `https://www.omdbapi.com/?i=tt3896198&apikey=36b0b502&s=${movieTitle}&page=1`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.Error) {
+        renderNotFound();
+      } else {
+        clearMovieArea();
+        getMovieInformation(data.Search);
+      }
+    });
 }
 
 //Gets additiional details from the API using the imdbID returned from searchForMovie()
-function getMovieInformation(movieArray){
-    movieArray.forEach(function(movie){
-        fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${movie.imdbID}`)
-        .then(response => response.json())
-        .then(data => renderMovie(data))
-    })
+function getMovieInformation(movieArray) {
+  movieArray.forEach(function (movie) {
+    fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${movie.imdbID}`)
+      .then((response) => response.json())
+      .then((data) => renderMovie(data));
+  });
 }
 
 //removes initial placeholder
-function clearMovieArea(){
-    mainSectionDisplay.innerHTML = "";
+function clearMovieArea() {
+  mainSectionDisplay.innerHTML = "";
 }
 
 //Adding movies to the watchlist
-document.addEventListener("click", function(e){
-    fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${e.target.id}`)
-    .then(response => response.json())
-    .then(data => {
-        //checking to see if movie has already been added to the list
-        const isMovieSelected = selectedMovies.findIndex((movie) => movie.imdbID === e.target.id);
-        if(data.Error){
-            console.log("error!")
-        }else if(isMovieSelected === -1){
-            selectedMovies.push(data); 
-            localStorage.setItem("myMovieWatchlist", JSON.stringify(selectedMovies))
-        }
-    })
-})
+document.addEventListener("click", function (e) {
+  fetch(`http://www.omdbapi.com/?apikey=36b0b502&i=${e.target.id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      //checking to see if movie has already been added to the list
+      const isMovieSelected = selectedMovies.findIndex(
+        (movie) => movie.imdbID === e.target.id
+      );
+      if (data.Error) {
+        console.log("error!");
+      } else if (isMovieSelected === -1) {
+        selectedMovies.push(data);
+        localStorage.setItem(
+          "myMovieWatchlist",
+          JSON.stringify(selectedMovies)
+        );
+      }
+    });
+});
 
-function renderNotFound(){
-    mainSectionDisplay.innerHTML =
-    `<h3 class="placeholder-text center">Unable to find what you’re looking for. 
-        Please try another search.</h3>`
+function renderNotFound() {
+  mainSectionDisplay.innerHTML = `<h3 class="placeholder-text center">Unable to find what you’re looking for. 
+        Please try another search.</h3>`;
 }
 
-
 //Renders complete list of returned movies from the API
-function renderMovie(movie){
-        mainSectionDisplay.innerHTML +=
-            `<div class="movie">
+function renderMovie(movie) {
+  mainSectionDisplay.innerHTML += `<div class="movie">
                 <img class="movie-poster" src=${movie.Poster} alt="">
                 <div class="details">
                     <div class="title">
@@ -90,5 +94,5 @@ function renderMovie(movie){
                     <p class="movie-description">${movie.Plot}</p>
                 </div>
 
-            </div>`
+            </div>`;
 }
